@@ -86,4 +86,19 @@ import Vision
         self.sessionHandler.torchSettings = self.settings
         self.sessionHandler.cardDetectionSettings = self.settings
     }
+
+    public func superLevelCustomization(
+                                    shouldShowNavBar: Bool = true,
+                                    title: String = "Capture CNIC", flipTitle: String? = nil, prompt: String? = "Scan your CNIC", tintColor: UIColor? = .orange, navBackgroundColor: UIColor? = .green) {
+                                        
+        if shouldShowNavBar {
+            self.navigationBar.topItem?.rightBarButtonItem?.title = flipTitle
+            self.navigationBar.items?.first?.title = title
+            self.navigationBar.tintColor = tintColor
+            self.navigationBar.topItem?.prompt = prompt
+            self.navigationBar.backgroundColor = navBackgroundColor
+        } else {
+            print("nothing to do")
+        }
+    }
 }
