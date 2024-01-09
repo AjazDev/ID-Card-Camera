@@ -33,8 +33,10 @@ import Vision
     ///   - height: Height of the card (units don't matter)
     ///   - barcodeSymbologies: Barcode symbologies to look for
     /// - Since: 1.4.0
-    @objc public init(width: CGFloat, height: CGFloat, barcodeSymbologies: [VNBarcodeSymbology]) throws {
-        self.cardDetectionSettings = BaseCardDetectionSettings(width: width, height: height)
+     @objc public init(width: CGFloat, height: CGFloat, barcodeSymbologies: [VNBarcodeSymbology]) throws {
+        self.cardDetectionSettings = BaseCardDetectionSettings()
+        self.cardDetectionSettings.size.width = width
+        self.cardDetectionSettings.size.height = height
         self.barcodeDetectionSettings = try BaseBarcodeDetectionSettings(barcodeSymbologies: barcodeSymbologies)
     }
     
