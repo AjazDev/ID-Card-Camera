@@ -63,14 +63,21 @@ import UIKit
     /// The samples in the pool are compared for sharpness and the sharpest one is de-warped and returned.
     /// - Since: 1.1.0
     @objc public var imagePoolSize: Int = 5
+
+    public var titles: (prompt: String, title: String, rotateCardTitle: String)
+    public var colors: (navigationBackgroundColor: UIColor, tintColor: UIColor)
+    public var shouldShowNavBar: Bool
     
     /// Initializer
     /// - Parameters:
     ///   - width: Width of the card (units don't matter)
     ///   - height: Height of the card (units don't matter)
     /// - Since: 1.0.0
-    @objc public init(width: CGFloat, height: CGFloat) {
+    @objc public init(width: CGFloat, height: CGFloat, prompt: String, title: String, rotateCardTitle: String, tintColor: UIColor, navBackgroundColor: UIColor, showNavBar: Bool) {
         self.size = CGSize(width: width, height: height)
+        self.titles = (prompt, title, rotateCardTitle)
+        self.colors = (navBackgroundColor, tintColor)
+        self.shouldShowNavBar = showNavBar
     }
     
     /// Convenience initializer
@@ -78,6 +85,6 @@ import UIKit
     /// Initializes settings with ISO ID-1 dimensions
     /// - Since: 1.4.0
     @objc public convenience override init() {
-        self.init(width: 85.6, height: 53.98)
+        self.init(width: 85.6, height: 53.98, prompt: "Scan your id card", title: "ID Card", rotateCardTitle: "Rotate Card", tintColor: .orange, navBackgroundColor: .black, showNavBar: true)
     }
 }
