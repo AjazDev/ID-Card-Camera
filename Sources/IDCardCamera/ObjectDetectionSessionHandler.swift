@@ -38,10 +38,11 @@ class ObjectDetectionSessionHandler: NSObject, AVCaptureVideoDataOutputSampleBuf
     weak var delegate: CardDetectionSessionHandlerDelegate?
     
     var isTorchAvailable: Bool {
-        guard let device = self.device else {
-            return false
-        }
-        return device.hasTorch && device.isTorchAvailable
+        return false 
+        // guard let device = self.device else {
+        //     return false
+        // }
+        // return device.hasTorch && device.isTorchAvailable
     }
     
     var cardDetectionSettings: BaseCardDetectionSettings?
@@ -100,8 +101,10 @@ class ObjectDetectionSessionHandler: NSObject, AVCaptureVideoDataOutputSampleBuf
         }
         
         session.commitConfiguration()
-        
-        session.startRunning()
+
+         DispatchQueue.global(qos: .userInitiated).async { //[weak self] in
+            self.session.startRunning()
+        }
     }
     
     func stopCamera() {
