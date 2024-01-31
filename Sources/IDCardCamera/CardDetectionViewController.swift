@@ -91,6 +91,7 @@ import Vision
     func updateNavSettings(){
         if self.settings.shouldShowNavBar {
             self.navigationBar.topItem?.rightBarButtonItem?.title = self.settings.titles.rotateCardTitle
+            self.navigationBar.topItem?.rightBarButtonItem = nil
             self.navigationBar.items?.first?.title = self.settings.titles.title
             self.navigationBar.tintColor = self.settings.colors.tintColor
             self.navigationBar.topItem?.prompt = self.settings.titles.prompt
